@@ -5,7 +5,6 @@ package com.java8.basics;
 
 import java.util.Arrays;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 
 /**
@@ -24,30 +23,30 @@ public class Excercise {
 				new Person("Mahesh", "Chitkote", 25), new Person("Pooja", "Birajdar", 20));
 
 		// sort all persons in list
-		Collections.sort(people, new Comparator<Person>() {
+		Collections.sort(people, /*new Comparator<Person>() {
 
 			@Override
 			public int compare(Person o1, Person o2) {
 				return o1.getName().compareTo(o2.getName());
 			}
-		});
+		}*/(p1,p2)->p1.getName().compareTo(p2.getName()));
 
 		// print all persons in list
 		printAll(people);
 		// print condationally
-		printConditionally(people, new Condition() {
+		printConditionally(people, /*new Condition() {
 			@Override
 			public boolean test(Person p) {
 				return p.getLastName().startsWith("B");
 			}
-		});
+		}*/p->p.getLastName().startsWith("B"));
 
-		printConditionally(people, new Condition() {
+		printConditionally(people, /*new Condition() {
 			@Override
 			public boolean test(Person p) {
 				return p.getLastName().startsWith("C");
 			}
-		});
+		}*/p->p.getLastName().startsWith("C"));
 
 	}
 
