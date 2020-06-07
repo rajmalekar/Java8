@@ -6,6 +6,7 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Function;
+import java.util.function.Predicate;
 import java.util.function.Supplier;
 import java.util.stream.Collectors;
 import com.java8.classes.Employee;
@@ -83,5 +84,28 @@ public class Java8InterfaceClient {
 		 */
 		String s = stringToInteger.andThen(integerToString).apply("hello Java8");
 		System.out.println(s);
+		
+		/**
+		 * Prdicates in java8
+		 */
+		
+		Predicate<String>sizeChecker = new Predicate<String>() {
+			@Override
+			public boolean test(String t) {
+				return t.length()<50;
+			}
+		};
+		
+		Predicate<String>containsChecker = new Predicate<String>() {
+			@Override
+			public boolean test(String t) {
+				return t.contains("Download");
+			}
+		};
+		
+		boolean predicateResult = sizeChecker.and(containsChecker)
+				.test("Click here to Download");
+		
+		System.out.println(predicateResult);
 	}
 }
